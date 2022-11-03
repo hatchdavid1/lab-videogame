@@ -6,7 +6,6 @@
     flex-wrap: wrap;
 }
 
-
 .Matrix div{
     height: 60px;
     width: 60px;
@@ -24,7 +23,11 @@
     background-color: lightblue;
 }
 
-
 .Car-left, .Car-right{
     background-color: lightgray;
+}
+
+#Start-Pause-button{
+    border-bottom: 10px;
+    padding: 10px;
 }
