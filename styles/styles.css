@@ -1,0 +1,30 @@
+.Matrix{
+    border: 1px solid black;
+    height: 540px;
+    width: 540px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.Matrix div{
+    height: 60px;
+    width: 60px;
+}
+
+.Ending-Row{
+    background-color: red;
+}
+
+.Start-Row{
+    background-color: blue;
+}
+
+.Street-left, .Street-right{
+    background-color: lightblue;
+}
+
+
+.Car-left, .Car-right{
+    background-color: lightgray;
+}
