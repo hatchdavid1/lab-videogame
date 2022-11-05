@@ -3,7 +3,9 @@ const resultScore = document.querySelector('#Result')
 const StartPauseButton = document.querySelector('#Start-Pause-button')
 const matrixSquare = document.querySelectorAll('.Matrix div')
 const treesLeft = document.querySelectorAll('.Tree-left')
-
+const treesRight = document.querySelectorAll('.Tree-right')
+const carsLeft = document.querySelectorAll('.Car-left')
+const carsRight = document.querySelectorAll('.Car-right')
 
 let actualIndex = 76;
 let rowLength = 9;
@@ -31,11 +33,14 @@ function frogMovement(tecla) {
 
 document.addEventListener('keydown', frogMovement)
 
-function moveTrees(){
-    treesLeft .forEach(treeLeft => treeMovementLeft(treeLeft))
+function moveElement(){
+    treesLeft.forEach(treeLeft => treeMovementLeft(treeLeft))
+    treesRight.forEach(treeLeft => carMovementLeft(treeLeft))
+    carsLeft.forEach(carLeft => carMovementLeft(carLeft))
+    carsRight.forEach(carLeft => carMovementLeft(carLeft))
 }
 
-moveTrees
+moveElement
 
 function treeMovementLeft(treeLeft){
     switch(true){
@@ -63,4 +68,23 @@ function treeMovementLeft(treeLeft){
 }
 
 
-setInterval(moveTrees, 1000)
+function carMovementLeft(carLeft){
+    switch(true){
+        case carLeft.classList.contains('c1'):
+            carLeft.classList.remove('c1')
+            carLeft.classList.add('c2')
+            break
+        case carLeft.classList.contains('c2'):
+            carLeft.classList.remove('c2')
+            carLeft.classList.add('c3')
+            break
+        case carLeft.classList.contains('c3'):
+            carLeft.classList.remove('c3')
+            carLeft.classList.add('c1')
+            break
+    }
+}
+
+
+
+setInterval(moveElement, 1000)
