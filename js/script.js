@@ -10,20 +10,16 @@ function frogMovement(tecla) {
     matrixSquare[actualIndex].classList.remove('frog')
     switch(tecla.keyCode){
         case 37:
-            console.log('left move');
-            actualIndex -=1; 
+            if (actualIndex % rowLength !==0) actualIndex -=1; 
             break
         case 39:
-            console.log('right move');
-            actualIndex +=1;
+            if (actualIndex % rowLength  < rowLength-1) actualIndex +=1;
             break
         case 38:
-            console.log('up move');
-            actualIndex -= rowLength
+            if (actualIndex - rowLength  >= 0) actualIndex -= rowLength
             break
         case 40:
-            console.log('down move');
-            actualIndex += rowLength
+            if (actualIndex + rowLength  < rowLength * rowLength) actualIndex += rowLength
             break;
     }
 
