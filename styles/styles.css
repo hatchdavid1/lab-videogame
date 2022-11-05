@@ -18,6 +18,7 @@
 .Start-Row{
     background-color: blue;
 }
+ 
 
 .Street-left, .Street-right{
     background-color: lightblue;
@@ -31,3 +32,9 @@
     border-bottom: 10px;
     padding: 10px;
 }
+
+.frog {
+    background-color: green;
+}
+
+
