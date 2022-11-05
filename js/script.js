@@ -1,4 +1,4 @@
-const endtime = document.querySelector('#Time-left');
+const endTime = document.querySelector('#Time-left');
 const resultScore = document.querySelector('#Result')
 const StartPauseButton = document.querySelector('#Start-Pause-button')
 const matrixSquare = document.querySelectorAll('.Matrix div')
@@ -9,6 +9,9 @@ const carsRight = document.querySelectorAll('.Car-right')
 
 let actualIndex = 76;
 let rowLength = 9;
+let timerID; 
+let actualTime = 20;
+
 function frogMovement(tecla) {
     //console.log('Movimiento');
     matrixSquare[actualIndex].classList.remove('frog')
@@ -34,35 +37,39 @@ function frogMovement(tecla) {
 document.addEventListener('keydown', frogMovement)
 
 function moveElement(){
+    actualTime--;
+    endTime.textContent = actualTime;
     treesLeft.forEach(treeLeft => treeMovementLeft(treeLeft))
-    treesRight.forEach(treeLeft => carMovementLeft(treeLeft))
+    treesRight.forEach(treeLeft => treeMovementLeft(treeLeft))
     carsLeft.forEach(carLeft => carMovementLeft(carLeft))
     carsRight.forEach(carLeft => carMovementLeft(carLeft))
+    gameOver()
+    levelUp()
 }
 
 moveElement
 
 function treeMovementLeft(treeLeft){
     switch(true){
-        case treeLeft.classList.contains('l1'):
-            treeLeft.classList.remove('l1')
-            treeLeft.classList.add('l2')
+        case treeLeft.classList.contains('t1'):
+            treeLeft.classList.remove('t1')
+            treeLeft.classList.add('t2')
             break
-        case treeLeft.classList.contains('l2'):
-            treeLeft.classList.remove('l2')
-            treeLeft.classList.add('l3')
+        case treeLeft.classList.contains('t2'):
+            treeLeft.classList.remove('t2')
+            treeLeft.classList.add('t3')
             break
-        case treeLeft.classList.contains('l3'):
-            treeLeft.classList.remove('l3')
-            treeLeft.classList.add('l4')
+        case treeLeft.classList.contains('t3'):
+            treeLeft.classList.remove('t3')
+            treeLeft.classList.add('t4')
             break
-        case treeLeft.classList.contains('l4'):
-            treeLeft.classList.remove('l4')
-            treeLeft.classList.add('l5')
+        case treeLeft.classList.contains('t4'):
+            treeLeft.classList.remove('t4')
+            treeLeft.classList.add('t5')
             break
-        case treeLeft.classList.contains('l5'):
-            treeLeft.classList.remove('l5')
-            treeLeft.classList.add('l1')
+        case treeLeft.classList.contains('t5'):
+            treeLeft.classList.remove('t5')
+            treeLeft.classList.add('t1')
             break
     }
 }
@@ -85,6 +92,26 @@ function carMovementLeft(carLeft){
     }
 }
 
+function gameOver(){
+    if (matrixSquare[actualIndex].classList.contains('c1') ||
+    matrixSquare[actualIndex].classList.contains('t4') ||
+    matrixSquare[actualIndex].classList.contains('t5') ||
+    actualTime  <= 0
+    ){
+        resultScore.textContent = 'Looser!!!'
+        clearInterval(timerID)
+        matrixSquare[actualIndex].classList.remove('frog')
+        document.removeEventListener('keydown', frogMovement)
+    }    
+}
 
 
-setInterval(moveElement, 1000)
+function levelUp(){
+    if (matrixSquare[actualIndex].classList.contains('Ending-Row')){ 
+        resultScore.textContent = 'Level Up!!!'
+        clearInterval(timerID)
+        document.removeEventListener('keydown', frogMovement)
+    }
+}
+
+timerID = setInterval(moveElement, 1200)
