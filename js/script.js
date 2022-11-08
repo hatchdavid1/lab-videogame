@@ -38,7 +38,7 @@ document.addEventListener('keydown', frogMovement)
 
 function moveElement(){
     actualTime--;
-    endTime.textContent = actualTime;
+    //endTime.innerHTML = actualTime;
     treesLeft.forEach(treeLeft => treeMovementLeft(treeLeft))
     treesRight.forEach(treeLeft => treeMovementLeft(treeLeft))
     carsLeft.forEach(carLeft => carMovementLeft(carLeft))
@@ -108,7 +108,7 @@ function gameOver(){
 
 function levelUp(){
     if (matrixSquare[actualIndex].classList.contains('Ending-Row')){ 
-        resultScore.textContent = 'Level Up!!!'
+        resultScore.textContent = 'Level 2'
         clearInterval(timerID)
         document.removeEventListener('keydown', frogMovement)
     }
