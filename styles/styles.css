@@ -1,12 +1,15 @@
 .body{
     background-color: indigo;
+    text-align: center;
 }
 .Matrix{
     border: 1px solid black;
     background-color: black;
     height: 540px;
     width: 540px;
+    margin: auto;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -26,8 +29,6 @@
 
 .t1, .t2, .t3{
     background-image: url('../images/tree.png');
-    background-color: lightgray;
-    
     background-size: cover;
     width: 100%;
     height: 100%;
