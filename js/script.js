@@ -1,19 +1,18 @@
 const endTime = document.querySelector('#Time-left');
 const resultScore = document.querySelector('#Result')
-const StartPauseButton = document.querySelector('#Start-Pause-button')
 const matrixSquare = document.querySelectorAll('.Matrix div')
 const treesLeft = document.querySelectorAll('.Tree-left')
 const treesRight = document.querySelectorAll('.Tree-right')
 const carsLeft = document.querySelectorAll('.Car-left')
 const carsRight = document.querySelectorAll('.Car-right')
+const frog = document.querySelector('.frog')
 
 let actualIndex = 76;
 let rowLength = 9;
 let timerID; 
-let actualTime = 20;
+let actualTime = 100;
 
 function frogMovement(tecla) {
-    //console.log('Movimiento');
     matrixSquare[actualIndex].classList.remove('frog')
     switch(tecla.keyCode){
         case 37:
